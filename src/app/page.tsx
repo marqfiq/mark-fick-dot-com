@@ -53,7 +53,7 @@ export default function Home() {
 
       <div className="py-[48px] border-b-[0.5px] border-border">
         <div className="flex items-baseline gap-4 mb-[36px]">
-          <span className="font-mono text-[11px] text-muted-3 tracking-[0.06em] whitespace-nowrap">
+          <span className="font-mono text-[11px] text-muted-1 tracking-[0.06em] whitespace-nowrap">
             building
           </span>
           <div className="flex-1 h-[0.5px] bg-border"></div>
@@ -100,7 +100,7 @@ export default function Home() {
 
       <div className="py-[48px] border-b-[0.5px] border-border">
         <div className="flex items-baseline gap-4 mb-[36px]">
-          <span className="font-mono text-[11px] text-muted-3 tracking-[0.06em] whitespace-nowrap">
+          <span className="font-mono text-[11px] text-muted-1 tracking-[0.06em] whitespace-nowrap">
             writing
           </span>
           <div className="flex-1 h-[0.5px] bg-border"></div>
@@ -146,7 +146,7 @@ export default function Home() {
 
       <div className="py-[48px] border-b-[0.5px] border-border">
         <div className="flex items-baseline gap-4 mb-[36px]">
-          <span className="font-mono text-[11px] text-muted-3 tracking-[0.06em] whitespace-nowrap">
+          <span className="font-mono text-[11px] text-muted-1 tracking-[0.06em] whitespace-nowrap">
             background
           </span>
           <div className="flex-1 h-[0.5px] bg-border"></div>
