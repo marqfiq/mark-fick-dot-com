@@ -1,224 +1,339 @@
+import Navbar from "../components/Navbar";
+import ScrollReveal from "../components/ScrollReveal";
+
 export default function Home() {
   return (
-    <div className="max-w-[860px] mx-auto px-[44px]">
-      <nav className="pt-8 pb-0 flex justify-between items-baseline">
-        <span className="text-[13px] font-medium text-text-head tracking-[-0.01em]">
-          Mark Fick
-        </span>
-        <div className="flex gap-7">
-          <a
-            href="/writing"
-            className="text-[12px] text-muted-2 transition-colors duration-150 hover:text-text-head"
-          >
-            writing
-          </a>
-          <a
-            href="/work"
-            className="text-[12px] text-muted-2 transition-colors duration-150 hover:text-text-head"
-          >
-            work
-          </a>
-          <a
-            href="/lab"
-            className="text-[12px] text-muted-2 transition-colors duration-150 hover:text-text-head"
-          >
-            lab
-          </a>
-          <a
-            href="mailto:mark@markfick.com"
-            className="text-[12px] text-accent transition-colors duration-150 hover:text-text-head"
-          >
-            mark@markfick.com
-          </a>
+    <main className="w-full">
+      {/* Hero Section */}
+      <section id="about" className="w-full bg-bg min-h-[100dvh] flex flex-col">
+        <div className="max-w-[860px] w-full mx-auto px-[20px] shrink-0">
+          <Navbar />
         </div>
-      </nav>
-
-      <div className="pt-[72px] pb-[64px] border-b-[0.5px] border-border">
-        <div className="font-mono text-[11px] text-muted-2 tracking-[0.04em] mb-[22px]">
-          Tyler, TX &mdash; available for select work
-        </div>
-        <h1 className="font-serif text-[72px] font-normal leading-[0.95] tracking-[-0.04em] text-text-head m-0 mb-[36px]">
-          Mark
-          <br />
-          <em className="italic text-[#888]">Fick</em>
-        </h1>
-        <p className="text-[16px] text-text-body leading-[1.65] max-w-[460px] font-normal">
-          Solo founder. I build products and ship code &mdash;{" "}
-          <strong className="text-text-strong font-medium">RetroFlow</strong> for engineering
-          teams, <strong className="text-text-strong font-medium">Ambry</strong> for people who
-          journal. I write about building companies without a team, distribution, and the gaps
-          between product intuition and what users actually want.
-        </p>
-      </div>
-
-      <div className="py-[48px] border-b-[0.5px] border-border">
-        <div className="flex items-baseline gap-4 mb-[36px]">
-          <span className="font-mono text-[11px] text-muted-1 tracking-[0.06em] whitespace-nowrap">
-            building
-          </span>
-          <div className="flex-1 h-[0.5px] bg-border"></div>
-        </div>
-
-        <div className="grid grid-cols-[1fr_auto] items-start gap-3 py-6 border-b-[0.5px] border-border-2 last:border-b-0 last:pb-0">
-          <div>
-            <div className="font-mono text-muted-3 text-[11px] mb-[10px]">01</div>
-            <div className="text-[18px] font-medium text-text-head tracking-[-0.02em] mb-2">
-              RetroFlow
+        <ScrollReveal fadeOnly className="flex-1 flex flex-col">
+          <div className="max-w-[860px] w-full mx-auto px-[20px] pt-[32px] pb-[72px] flex-1 flex flex-col justify-center items-start">
+            <img
+              src="/profile.jpg"
+              alt="Mark Fick"
+              className="w-[124px] h-[124px] md:w-[172px] md:h-[172px] object-cover rounded-[16px] md:rounded-[20px] mb-[32px] border border-border-2 transition-all duration-300"
+            />
+            {/* Converted header sizing to use dynamic base relative rem scaling */}
+            <h1 className="font-serif text-[clamp(1.5rem,14vw,3rem)] whitespace-nowrap font-normal leading-[0.95] tracking-[-0.04em] text-text-head m-0 mb-[36px]">
+              Hi, <em className="italic text-accent-rose">I'm Mark</em>
+            </h1>
+            <div className="flex flex-col gap-5 text-base text-text-body leading-[1.65] font-normal">
+              <p>
+                I'm a technical founder and builder based in Seattle.
+              </p>
+              <p>
+                I'm currently building <strong className="text-text-strong font-medium">RetroFlow</strong>, a platform designed to help teams surface and resolve friction in their development process - especially as AI increases the volume and speed of output. I focus on turning real workflow problems into products and systems that teams can actually use.
+              </p>
+              <p>
+                Outside of that, I spend my time tinkering with side projects, traveling, or enjoying a good cup of coffee.
+              </p>
             </div>
-            <p className="text-[13px] text-muted-1 leading-[1.6] max-w-[380px]">
-              Retrospective tooling for engineering teams. Async-first, built around the feedback
-              loops that actually change how teams work.
-            </p>
-          </div>
-          <div className="text-right">
-            <span className="font-mono block text-[11px] text-muted-2 mb-[6px]">
-              retroflow.io
-            </span>
-            <span className="font-mono text-[11px] text-muted-3">100+ weekly active users</span>
-          </div>
-        </div>
 
-        <div className="grid grid-cols-[1fr_auto] items-start gap-3 py-6 border-b-[0.5px] border-border-2 last:border-b-0 last:pb-0">
-          <div>
-            <div className="font-mono text-muted-3 text-[11px] mb-[10px]">02</div>
-            <div className="text-[18px] font-medium text-text-head tracking-[-0.02em] mb-2">
-              Ambry
+            <a
+              href="https://linkedin.com/in/mark-fick"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 mt-8 text-sm text-text-mid font-medium hover:text-text-head transition-colors group"
+            >
+              linkedin
+              <svg className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        </ScrollReveal>
+      </section>
+
+      {/* What I'm up to Section - Alternating Color */}
+      <ScrollReveal>
+        <section className="w-full bg-bg-alt">
+          <div className="max-w-[860px] mx-auto px-[20px] py-[72px]">
+            <div className="flex items-center gap-4 mb-[48px]">
+              <h2 className="font-serif text-2xl font-bold text-text-head tracking-[0.01em] whitespace-nowrap">
+                What I'm up to
+              </h2>
+              <div className="flex-1 h-[0.5px] bg-border"></div>
             </div>
-            <p className="text-[13px] text-muted-1 leading-[1.6] max-w-[380px]">
-              A journaling app for the things you almost forgot to write down. Calm, private,
-              designed to get out of your way.
-            </p>
-          </div>
-          <div className="text-right">
-            <span className="font-mono block text-[11px] text-muted-2 mb-[6px]">
-              ambryjournal.com
-            </span>
-            <span className="font-mono text-[11px] text-muted-3">&nbsp;</span>
-          </div>
-        </div>
-      </div>
 
-      <div className="py-[48px] border-b-[0.5px] border-border">
-        <div className="flex items-baseline gap-4 mb-[36px]">
-          <span className="font-mono text-[11px] text-muted-1 tracking-[0.06em] whitespace-nowrap">
-            writing
-          </span>
-          <div className="flex-1 h-[0.5px] bg-border"></div>
-          <a
-            href="/writing"
-            className="font-mono text-[11px] text-muted-2 whitespace-nowrap transition-colors duration-150 hover:text-text-head"
-          >
-            all &rarr;
-          </a>
-        </div>
-
-        <div className="grid grid-cols-[auto_1fr_auto] gap-6 items-baseline py-[18px] border-b-[0.5px] border-border-2 last:border-b-0">
-          <span className="font-mono text-[11px] text-muted-3 min-w-[20px]">01</span>
-          <a
-            href="#"
-            className="text-[15px] text-text-mid font-normal leading-[1.4] transition-colors duration-150 hover:text-text-head"
-          >
-            Why I stopped building features and started counting users
-          </a>
-          <span className="font-mono text-[11px] text-muted-3 whitespace-nowrap">Apr 2025</span>
-        </div>
-        <div className="grid grid-cols-[auto_1fr_auto] gap-6 items-baseline py-[18px] border-b-[0.5px] border-border-2 last:border-b-0">
-          <span className="font-mono text-[11px] text-muted-3 min-w-[20px]">02</span>
-          <a
-            href="#"
-            className="text-[15px] text-text-mid font-normal leading-[1.4] transition-colors duration-150 hover:text-text-head"
-          >
-            What a 37k-impression post taught me about positioning copy
-          </a>
-          <span className="font-mono text-[11px] text-muted-3 whitespace-nowrap">Mar 2025</span>
-        </div>
-        <div className="grid grid-cols-[auto_1fr_auto] gap-6 items-baseline py-[18px] border-b-[0.5px] border-border-2 last:border-b-0">
-          <span className="font-mono text-[11px] text-muted-3 min-w-[20px]">03</span>
-          <a
-            href="#"
-            className="text-[15px] text-text-mid font-normal leading-[1.4] transition-colors duration-150 hover:text-text-head"
-          >
-            Building a repeatable content system for a one-person company
-          </a>
-          <span className="font-mono text-[11px] text-muted-3 whitespace-nowrap">Feb 2025</span>
-        </div>
-      </div>
-
-      <div className="py-[48px] border-b-[0.5px] border-border">
-        <div className="flex items-baseline gap-4 mb-[36px]">
-          <span className="font-mono text-[11px] text-muted-1 tracking-[0.06em] whitespace-nowrap">
-            background
-          </span>
-          <div className="flex-1 h-[0.5px] bg-border"></div>
-        </div>
-
-        <div className="flex flex-col gap-5">
-          <div className="grid grid-cols-[1fr_auto] items-baseline">
-            <div>
-              <div className="text-[14px] text-text-head font-normal">Senior Software Engineer</div>
-              <div className="text-[13px] text-muted-2 mt-[2px]">Acme Corp</div>
+            <div className="flex flex-col gap-5 text-base text-text-body leading-[1.65] max-w-[620px] font-normal">
+              <p>
+                I'm building <strong className="text-text-strong font-medium">RetroFlow</strong> — a platform that helps engineering teams surface and fix the friction in how they actually work.
+              </p>
+              <p>
+                Most of my thinking right now is about what AI is doing to software development. Increased output is shifting the bottleneck away from writing code and toward review, coordination, and decision-making. RetroFlow is how I'm exploring and solving that in practice.
+              </p>
+              <p>
+                Beyond that, I'm experimenting at the intersection of AI and engineering systems — how tools become more autonomous, how development processes evolve, and what infrastructure teams actually need as they scale.
+              </p>
+              <p>
+                <strong className="text-text-strong font-medium">What I'm good at:</strong> I pick up quickly on how systems behave - especially where they break under pressure. Give me a short amount of time with a team or workflow and I'll have a working model of where the friction is coming from and what's worth fixing. I love building simple, practical solutions that fit into how teams already work rather than layering new process on top.
+              </p>
             </div>
-            <span className="font-mono text-[11px] text-muted-3">2021 &ndash; 2024</span>
+
+            <a
+              href="https://retroflow.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 mt-8 text-sm text-text-mid font-medium hover:text-text-head transition-colors group"
+            >
+              Find out more at retroflow.io
+              <svg className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
           </div>
-          <div className="grid grid-cols-[1fr_auto] items-baseline">
-            <div>
-              <div className="text-[14px] text-text-head font-normal">Full Stack Developer</div>
-              <div className="text-[13px] text-muted-2 mt-[2px]">Startup Co.</div>
+        </section>
+      </ScrollReveal>
+
+      {/* Background Section - Standard Color */}
+      <ScrollReveal>
+        <section id="work" className="w-full bg-bg">
+          <div className="max-w-[860px] mx-auto px-[20px] py-[72px]">
+            <div className="flex items-center gap-4 mb-[48px]">
+              <h2 className="font-serif text-2xl font-bold text-text-head tracking-[0.01em] whitespace-nowrap">
+                Before that...
+              </h2>
+              <div className="flex-1 h-[0.5px] bg-border"></div>
             </div>
-            <span className="font-mono text-[11px] text-muted-3">2019 &ndash; 2021</span>
+
+            <div className="flex flex-col gap-8">
+              <div className="flex flex-col">
+                <div className="flex justify-between items-baseline gap-4 mb-2">
+                  <div className="text-base text-text-head font-normal">Senior Data Engineer - Bowhead</div>
+                  <span className="font-mono text-xs text-muted-3 shrink-0">2022 &ndash; 2025</span>
+                </div>
+                <div className="text-sm text-muted-2 leading-[1.6] w-full">Built the data infrastructure and internal systems supporting pricing and billing workflows as the company scaled toward IPO.</div>
+              </div>
+              <div className="flex flex-col">
+                <div className="flex justify-between items-baseline gap-4 mb-2">
+                  <div className="text-base text-text-head font-normal">Software Consultant</div>
+                  <span className="font-mono text-xs text-muted-3 shrink-0">2020 &ndash; 2022</span>
+                </div>
+                <div className="text-sm text-muted-2 leading-[1.6] w-full">Designed and shipped data and software systems for clients ranging from individual creators to international investment firms.</div>
+              </div>
+              <div className="flex flex-col">
+                <div className="flex justify-between items-baseline gap-4 mb-2">
+                  <div className="text-base text-text-head font-normal">Software Engineer - Nationwide</div>
+                  <span className="font-mono text-xs text-muted-3 shrink-0">2018 &ndash; 2020</span>
+                </div>
+                <div className="text-sm text-muted-2 leading-[1.6] w-full">Maintained and improved financial data governance systems, ensuring accuracy across billions of records used in reporting and analytics.</div>
+              </div>
+            </div>
+
+            <div className="text-sm text-muted-2 mt-10 mb-3">Technologies I've worked with</div>
+            <div className="flex flex-col gap-[10px]">
+              <div className="flex items-baseline gap-2">
+                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">Stack</span>
+                <span className="font-mono text-xs text-muted-2">TypeScript, Python, React, Node.js</span>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">Data</span>
+                <span className="font-mono text-xs text-muted-2">SQL, ETL/ELT, data modeling, analytics pipelines</span>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">Infra</span>
+                <span className="font-mono text-xs text-muted-2">Firebase, Postgres, AWS, Azure</span>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">Systems</span>
+                <span className="font-mono text-xs text-muted-2">real-time apps, event-driven architecture</span>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">Product</span>
+                <span className="font-mono text-xs text-muted-2">analytics instrumentation, funnel design, experimentation</span>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">AI</span>
+                <span className="font-mono text-xs text-muted-2">LLM APIs, agent workflows</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      {/* Building Section - Standard Color */}
+      <ScrollReveal>
+        <section className="w-full bg-bg-alt">
+          <div className="max-w-[860px] mx-auto px-[20px] py-[72px]">
+            <div className="flex items-center gap-4 mb-[48px]">
+              <h2 className="font-serif text-2xl font-bold text-text-head tracking-[0.01em] whitespace-nowrap">
+                Things I've built
+              </h2>
+              <div className="flex-1 h-[0.5px] bg-border"></div>
+            </div>
+
+            <div className="flex flex-col pb-8 mb-8 border-b-[0.5px] border-border-2 last:border-b-0 last:pb-0 last:mb-0">
+              <div className="flex justify-between items-baseline mb-2">
+                <div className="font-mono text-muted-3 text-xs">01</div>
+                <a href="https://retroflow.io" target="_blank" rel="noopener noreferrer" className="font-mono text-xs text-muted-2 transition-colors duration-150 hover:text-text-head">
+                  retroflow.io
+                </a>
+              </div>
+              <div className="flex justify-between items-baseline mb-3">
+                <div className="text-xl font-medium text-text-head tracking-[-0.02em]">
+                  RetroFlow
+                </div>
+                <span className="font-mono text-xs text-muted-3">
+                  &nbsp;
+                </span>
+              </div>
+              <p className="text-sm text-muted-1 leading-[1.6] w-full max-w-none">
+                Retrospective tooling for engineering teams. Async-first, built around the feedback
+                loops that actually change how teams work.
+              </p>
+            </div>
+
+            <div className="flex flex-col pb-8 mb-8 border-b-[0.5px] border-border-2 last:border-b-0 last:pb-0 last:mb-0">
+              <div className="flex justify-between items-baseline mb-2">
+                <div className="font-mono text-muted-3 text-xs">02</div>
+                <a href="https://ambryjournal.com" target="_blank" rel="noopener noreferrer" className="font-mono text-xs text-muted-2 transition-colors duration-150 hover:text-text-head">
+                  ambryjournal.com
+                </a>
+              </div>
+              <div className="flex justify-between items-baseline mb-3">
+                <div className="text-xl font-medium text-text-head tracking-[-0.02em]">
+                  Ambry Journal
+                </div>
+                <span className="font-mono text-xs text-muted-3">
+                  &nbsp;
+                </span>
+              </div>
+              <p className="text-sm text-muted-1 leading-[1.6] w-full max-w-none">
+                A simple journaling app I built for my partner. It started as a personal project and became a product I'm proud of.
+              </p>
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      {/* Writing Section - Alternating Color */}
+      {/* <section id="writing" className="w-full bg-bg">
+        <div className="max-w-[860px] mx-auto px-[20px] py-[72px]">
+          <div className="flex items-center gap-4 mb-[48px]">
+            <h2 className="font-serif text-2xl font-bold text-text-head tracking-[0.01em] whitespace-nowrap">
+              Thinking & Writing
+            </h2>
+            <div className="flex-1 h-[0.5px] bg-border"></div>
+            <a
+              href="/writing"
+              className="font-mono text-xs text-muted-2 whitespace-nowrap transition-colors duration-150 hover:text-text-head hidden md:block"
+            >
+              see all &rarr;
+            </a>
+          </div>
+
+          <div className="grid grid-cols-[1fr_auto] gap-6 items-baseline pb-[24px] mb-[24px] border-b-[0.5px] border-border-2 last:border-b-0 last:pb-0 last:mb-0">
+            <a
+              href="#"
+              className="text-lg text-text-mid font-normal leading-[1.4] transition-colors duration-150 hover:text-text-head"
+            >
+              Why I stopped building features and started counting users
+            </a>
+            <span className="font-mono text-xs text-muted-3 whitespace-nowrap">Apr 2025</span>
+          </div>
+          <div className="grid grid-cols-[1fr_auto] gap-6 items-baseline pb-[24px] mb-[24px] border-b-[0.5px] border-border-2 last:border-b-0 last:pb-0 last:mb-0">
+            <a
+              href="#"
+              className="text-lg text-text-mid font-normal leading-[1.4] transition-colors duration-150 hover:text-text-head"
+            >
+              What a 37k-impression post taught me about positioning copy
+            </a>
+            <span className="font-mono text-xs text-muted-3 whitespace-nowrap">Mar 2025</span>
+          </div>
+          <div className="grid grid-cols-[1fr_auto] gap-6 items-baseline pb-[24px] border-b-[0.5px] border-border-2 last:border-b-0 last:pb-0">
+            <a
+              href="#"
+              className="text-lg text-text-mid font-normal leading-[1.4] transition-colors duration-150 hover:text-text-head"
+            >
+              Building a repeatable content system for a one-person company
+            </a>
+            <span className="font-mono text-xs text-muted-3 whitespace-nowrap">Feb 2025</span>
+          </div>
+
+          <div className="mt-8 text-right md:hidden">
+            <a
+              href="/writing"
+              className="font-mono text-xs text-muted-2 whitespace-nowrap transition-colors duration-150 hover:text-text-head"
+            >
+              see all &rarr;
+            </a>
           </div>
         </div>
+      </section> */}
 
-        <div className="flex flex-wrap items-center gap-[6px] mt-7">
-          <span className="font-mono text-[11px] text-muted-2 border-b-[0.5px] border-muted-3 pb-[1px]">
-            TypeScript
-          </span>
-          <span className="text-[11px] text-border">/</span>
-          <span className="font-mono text-[11px] text-muted-2 border-b-[0.5px] border-muted-3 pb-[1px]">
-            React
-          </span>
-          <span className="text-[11px] text-border">/</span>
-          <span className="font-mono text-[11px] text-muted-2 border-b-[0.5px] border-muted-3 pb-[1px]">
-            Next.js
-          </span>
-          <span className="text-[11px] text-border">/</span>
-          <span className="font-mono text-[11px] text-muted-2 border-b-[0.5px] border-muted-3 pb-[1px]">
-            Firebase
-          </span>
-          <span className="text-[11px] text-border">/</span>
-          <span className="font-mono text-[11px] text-muted-2 border-b-[0.5px] border-muted-3 pb-[1px]">
-            Node.js
-          </span>
-          <span className="text-[11px] text-border">/</span>
-          <span className="font-mono text-[11px] text-muted-2 border-b-[0.5px] border-muted-3 pb-[1px]">
-            Postgres
-          </span>
-        </div>
-      </div>
+      {/* Get in Touch Section - Alternating Color */}
+      <ScrollReveal>
+        <section id="contact" className="w-full bg-bg">
+          <div className="max-w-[860px] mx-auto px-[20px] py-[72px]">
+            <div className="flex items-center gap-4 mb-[48px]">
+              <h2 className="font-serif text-2xl font-bold text-text-head tracking-[0.01em] whitespace-nowrap">
+                Get in Touch
+              </h2>
+              <div className="flex-1 h-[0.5px] bg-border"></div>
+            </div>
 
-      <footer className="py-8 flex justify-between items-center">
-        <span className="font-mono text-[11px] text-muted-3">markfick.com</span>
-        <div className="flex gap-5">
-          <a
-            href="https://linkedin.com/in/markfick"
-            className="font-mono text-[11px] text-muted-2 transition-colors duration-150 hover:text-text-head"
-          >
-            linkedin
-          </a>
-          <a
-            href="https://github.com/marqfiq"
-            className="font-mono text-[11px] text-muted-2 transition-colors duration-150 hover:text-text-head"
-          >
-            github
-          </a>
-          <a
-            href="mailto:mark@markfick.com"
-            className="font-mono text-[11px] text-muted-2 transition-colors duration-150 hover:text-text-head"
-          >
-            email
-          </a>
+            <div className="flex flex-col gap-8 max-w-[540px]">
+              <p className="text-base text-text-body leading-[1.65] font-normal">
+                Whether you'd like to work with me or find out more about what I'm working on, I'd love to hear from you.
+              </p>
+              <div className="flex flex-wrap items-center gap-6 md:gap-8">
+                <a
+                  href="mailto:markfick31415@gmail.com"
+                  className="inline-flex items-center gap-2 text-sm text-text-mid font-medium hover:text-text-head transition-colors group"
+                >
+                  Email
+                  <svg className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+                <a
+                  href="https://linkedin.com/in/mark-fick"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm text-text-mid font-medium hover:text-text-head transition-colors group"
+                >
+                  LinkedIn
+                  <svg className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      {/* Footer - Standard Color */}
+      <footer className="w-full bg-bg-dark border-t border-border-2">
+        <div className="max-w-[860px] mx-auto px-[20px] py-12 flex flex-col items-center gap-5">
+          <div className="flex flex-wrap justify-center items-center gap-4">
+            <a
+              href="https://linkedin.com/in/mark-fick"
+              className="font-mono text-sm text-muted-2 transition-colors duration-150 hover:text-text-head"
+            >
+              linkedin
+            </a>
+            <span className="font-mono text-sm text-muted-3">|</span>
+            <a
+              href="https://github.com/marqfiq"
+              className="font-mono text-sm text-muted-2 transition-colors duration-150 hover:text-text-head"
+            >
+              github
+            </a>
+            <span className="font-mono text-sm text-muted-3">|</span>
+            <a
+              href="mailto:markfick31415@gmail.com"
+              className="font-mono text-sm text-muted-2 transition-colors duration-150 hover:text-text-head"
+            >
+              email
+            </a>
+          </div>
+          <span className="font-mono text-sm text-text-body font-medium tracking-[0.02em]">Mark Fick</span>
         </div>
       </footer>
-    </div>
+    </main>
   );
 }

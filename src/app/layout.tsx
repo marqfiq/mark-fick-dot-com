@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import FirebaseAnalytics from "../components/FirebaseAnalytics";
 
 export const metadata: Metadata = {
   title: "Mark Fick",
@@ -13,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="bg-bg text-text antialiased">
+        <FirebaseAnalytics />
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,23 +1,51 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
-:root {
-  --bg:        #0C0C0E;
-  --surface:   #161618;
-  --border:    #353538;
-  --border-2:  #2E2E32;
-  --text:      #FFFFFF;
-  --text-head: #FFFFFF;
-  --text-body: #A0A0B0;
-  --text-strong:#E0E0ED;
-  --text-mid:  #E8E8F0;
-  --muted-1:   #888899;
-  --muted-2:   #777788;
-  --muted-3:   #666677;
-  --accent:    #AABBFF;
+@layer base {
+  .prose {
+    --tw-prose-body: var(--text-body);
+    --tw-prose-headings: var(--text-head);
+    --tw-prose-lead: var(--muted-1);
+    --tw-prose-links: var(--text-mid);
+    --tw-prose-bold: var(--text-strong);
+    --tw-prose-counters: var(--muted-3);
+    --tw-prose-bullets: var(--muted-3);
+    --tw-prose-hr: var(--border);
+    --tw-prose-quotes: var(--text-strong);
+    --tw-prose-quote-borders: var(--border);
+    --tw-prose-captions: var(--muted-2);
+    --tw-prose-code: var(--text);
+    --tw-prose-pre-code: var(--text);
+    --tw-prose-pre-bg: var(--bg-alt);
+    --tw-prose-th-borders: var(--border);
+    --tw-prose-td-borders: var(--border-2);
+  }
 }
 
-@theme inline {
+:root {
+  --bg: #1a1d19;
+  --bg-alt: #171a16;
+  --bg-dark: #0b0d0b;
+  /* Reverted to optically dark tone */
+  --surface: #20241e;
+  --border: #242C20;
+  --border-2: #1B2217;
+  --text: #FDFCE0;
+  --text-head: #FDFCE0;
+  --text-body: #9FA69B;
+  --text-strong: #FDFCE0;
+  --text-mid: #dcdcbd;
+  --muted-1: #eaf6e1;
+  --muted-2: #8f9889;
+  --muted-3: #565b52;
+  --accent: #96c0e6;
+  --accent-rose: #af8699;
+}
+
+@theme {
   --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-alt);
+  --color-bg-dark: var(--bg-dark);
   --color-surface: var(--surface);
   --color-border: var(--border);
   --color-border-2: var(--border-2);
@@ -30,10 +58,21 @@
   --color-muted-2: var(--muted-2);
   --color-muted-3: var(--muted-3);
   --color-accent: var(--accent);
+  --color-accent-rose: var(--accent-rose);
 
   --font-sans: -apple-system, "Helvetica Neue", sans-serif;
   --font-serif: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   --font-mono: "Courier New", Courier, monospace;
+}
+
+/* 
+  Central Text Scaling Variable!
+  By changing this root font size, ALL text on the website will scale dynamically
+  via the standard `rem` measurement units instead of using separated hard pixels.
+*/
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -41,4 +80,27 @@ body {
   color: var(--text);
   font-family: var(--font-sans);
   min-height: 100vh;
+}
+
+/* Custom Text Highlight using your palette */
+::selection {
+  background-color: var(--accent-rose);
+  color: var(--bg);
+}
+
+::-moz-selection {
+  background-color: var(--accent-rose);
+  color: var(--bg);
+}
+/* Scroll Reveal Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
