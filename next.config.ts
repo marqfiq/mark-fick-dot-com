@@ -1,8 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  // Force restart 4
+  output: 'export',
   serverExternalPackages: ['firebase-admin'],
 };
 

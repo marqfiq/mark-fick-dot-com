@@ -186,7 +186,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="flex flex-col pb-8 mb-8 border-b-[0.5px] border-border-2 last:border-b-0 last:pb-0 last:mb-0">
+            <div className="flex flex-col pb-8 mb-8 border-b-[0.5px] border-border-2">
               <div className="flex justify-between items-baseline mb-2">
                 <div className="font-mono text-muted-3 text-xs">02</div>
                 <a href="https://ambryjournal.com" target="_blank" rel="noopener noreferrer" className="font-mono text-xs text-muted-2 transition-colors duration-150 hover:text-text-head">
@@ -204,6 +204,70 @@ export default function Home() {
               <p className="text-sm text-muted-1 leading-[1.6] w-full max-w-none">
                 A simple journaling app I built for my partner. It started as a personal project and became a product I'm proud of.
               </p>
+            </div>
+
+            <div className="flex flex-col pb-8 mb-8 border-b-[0.5px] border-border-2">
+              <div className="flex justify-between items-baseline mb-2">
+                <div className="font-mono text-muted-3 text-xs">03</div>
+                <a href="https://retroflow.io/ai-context-audit" target="_blank" rel="noopener noreferrer" className="font-mono text-xs text-muted-2 transition-colors duration-150 hover:text-text-head">
+                  retroflow.io/ai-context-audit
+                </a>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1.12fr] gap-6 items-start mt-1">
+                <div className="flex flex-col">
+                  <h3 className="text-xl font-medium text-text-head tracking-[-0.02em] mb-3">
+                    Agent Context Audit
+                  </h3>
+                  <p className="text-sm text-muted-1 leading-[1.6] w-full max-w-none">
+                    A focused audit that turns scattered repo knowledge into reusable context for AI coding agents: architecture, workflows, conventions, known pitfalls, and risk areas, so agents start with the context they need instead of rediscovering the codebase from scratch.
+                  </p>
+                </div>
+                <a
+                  href="https://retroflow.io/ai-context-audit"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative group overflow-hidden rounded-[12px] border border-border-2 aspect-[16/9] w-full bg-surface shadow-md block"
+                >
+                  <img
+                    src="/agent-context-audit.png"
+                    alt="Agent Context Audit"
+                    className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-[1.05]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                </a>
+              </div>
+            </div>
+
+            <div className="flex flex-col pb-8 mb-8 border-b-[0.5px] border-border-2 last:border-b-0 last:pb-0 last:mb-0">
+              <div className="flex justify-between items-baseline mb-2">
+                <div className="font-mono text-muted-3 text-xs">04</div>
+                <a href="https://retroflow.io/ai-project-roi" target="_blank" rel="noopener noreferrer" className="font-mono text-xs text-muted-2 transition-colors duration-150 hover:text-text-head">
+                  retroflow.io/ai-project-roi
+                </a>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1.12fr] gap-6 items-start mt-1">
+                <div className="flex flex-col">
+                  <h3 className="text-xl font-medium text-text-head tracking-[-0.02em] mb-3">
+                    AI Project ROI
+                  </h3>
+                  <p className="text-sm text-muted-1 leading-[1.6] w-full max-w-none">
+                    A feasibility and ROI calculator designed to help teams analyze whether an AI project is actually worth building. It scores readiness across data quality, stakeholders, and complexity, outlining clear implementation paths with estimated hours and value saved.
+                  </p>
+                </div>
+                <a
+                  href="https://retroflow.io/ai-project-roi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative group overflow-hidden rounded-[12px] border border-border-2 aspect-[16/9] w-full bg-surface shadow-md block"
+                >
+                  <img
+                    src="/ai-project-roi.png"
+                    alt="AI Project ROI"
+                    className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-[1.05]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                </a>
+              </div>
             </div>
           </div>
         </section>

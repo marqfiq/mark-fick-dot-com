@@ -2,6 +2,12 @@ import { notFound } from 'next/navigation';
 import { getPublishedPostBySlug } from '@/lib/posts';
 import Navbar from '@/components/Navbar';
 
+// Required for static export — returns empty for now, populate when blog launches
+export async function generateStaticParams() {
+  return [];
+}
+export const dynamicParams = false;
+
 type Props = {
   params: {
     slug: string
