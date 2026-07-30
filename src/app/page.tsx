@@ -48,7 +48,7 @@ export default function Home() {
       </section>
 
       {/* What I'm up to Section - Alternating Color */}
-      <ScrollReveal>
+      {/* <ScrollReveal>
         <section className="w-full bg-bg-alt">
           <div className="max-w-[860px] mx-auto px-[20px] py-[72px]">
             <div className="flex items-center gap-4 mb-[48px]">
@@ -86,81 +86,15 @@ export default function Home() {
             </a>
           </div>
         </section>
-      </ScrollReveal>
+      </ScrollReveal> */}
 
-      {/* Background Section - Standard Color */}
-      <ScrollReveal>
-        <section id="work" className="w-full bg-bg">
-          <div className="max-w-[860px] mx-auto px-[20px] py-[72px]">
-            <div className="flex items-center gap-4 mb-[48px]">
-              <h2 className="font-serif text-2xl font-bold text-text-head tracking-[0.01em] whitespace-nowrap">
-                Before that...
-              </h2>
-              <div className="flex-1 h-[0.5px] bg-border"></div>
-            </div>
-
-            <div className="flex flex-col gap-8">
-              <div className="flex flex-col">
-                <div className="flex justify-between items-baseline gap-4 mb-2">
-                  <div className="text-base text-text-head font-normal">Senior Data Engineer - Bowhead</div>
-                  <span className="font-mono text-xs text-muted-3 shrink-0">2022 &ndash; 2025</span>
-                </div>
-                <div className="text-sm text-muted-2 leading-[1.6] w-full">Built the data infrastructure and internal systems supporting pricing and billing workflows as the company scaled toward IPO.</div>
-              </div>
-              <div className="flex flex-col">
-                <div className="flex justify-between items-baseline gap-4 mb-2">
-                  <div className="text-base text-text-head font-normal">Software Consultant</div>
-                  <span className="font-mono text-xs text-muted-3 shrink-0">2020 &ndash; 2022</span>
-                </div>
-                <div className="text-sm text-muted-2 leading-[1.6] w-full">Designed and shipped data and software systems for clients ranging from individual creators to international investment firms.</div>
-              </div>
-              <div className="flex flex-col">
-                <div className="flex justify-between items-baseline gap-4 mb-2">
-                  <div className="text-base text-text-head font-normal">Software Engineer - Nationwide</div>
-                  <span className="font-mono text-xs text-muted-3 shrink-0">2018 &ndash; 2020</span>
-                </div>
-                <div className="text-sm text-muted-2 leading-[1.6] w-full">Maintained and improved financial data governance systems, ensuring accuracy across billions of records used in reporting and analytics.</div>
-              </div>
-            </div>
-
-            <div className="text-sm text-muted-2 mt-10 mb-3">Technologies I've worked with</div>
-            <div className="flex flex-col gap-[10px]">
-              <div className="flex items-baseline gap-2">
-                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">Stack</span>
-                <span className="font-mono text-xs text-muted-2">TypeScript, Python, React, Node.js</span>
-              </div>
-              <div className="flex items-baseline gap-2">
-                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">Data</span>
-                <span className="font-mono text-xs text-muted-2">SQL, ETL/ELT, data modeling, analytics pipelines</span>
-              </div>
-              <div className="flex items-baseline gap-2">
-                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">Infra</span>
-                <span className="font-mono text-xs text-muted-2">Firebase, Postgres, AWS, Azure</span>
-              </div>
-              <div className="flex items-baseline gap-2">
-                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">Systems</span>
-                <span className="font-mono text-xs text-muted-2">real-time apps, event-driven architecture</span>
-              </div>
-              <div className="flex items-baseline gap-2">
-                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">Product</span>
-                <span className="font-mono text-xs text-muted-2">analytics instrumentation, funnel design, experimentation</span>
-              </div>
-              <div className="flex items-baseline gap-2">
-                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">AI</span>
-                <span className="font-mono text-xs text-muted-2">LLM APIs, agent workflows</span>
-              </div>
-            </div>
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* Building Section - Standard Color */}
+      {/* Building Section - Alternating Color */}
       <ScrollReveal>
         <section className="w-full bg-bg-alt">
           <div className="max-w-[860px] mx-auto px-[20px] py-[72px]">
             <div className="flex items-center gap-4 mb-[48px]">
               <h2 className="font-serif text-2xl font-bold text-text-head tracking-[0.01em] whitespace-nowrap">
-                Things I've built
+                Past Projects
               </h2>
               <div className="flex-1 h-[0.5px] bg-border"></div>
             </div>
@@ -273,6 +207,86 @@ export default function Home() {
         </section>
       </ScrollReveal>
 
+      {/* Background Section - Standard Color */}
+      <ScrollReveal>
+        <section id="work" className="w-full bg-bg">
+          <div className="max-w-[860px] mx-auto px-[20px] py-[72px]">
+            <div className="flex items-center gap-4 mb-[48px]">
+              <h2 className="font-serif text-2xl font-bold text-text-head tracking-[0.01em] whitespace-nowrap">
+                Experience
+              </h2>
+              <div className="flex-1 h-[0.5px] bg-border"></div>
+            </div>
+
+            <div className="flex flex-col gap-8">
+              <div className="flex flex-col">
+                <div className="flex justify-between items-baseline gap-4 mb-2">
+                  <div className="text-base text-text-head font-normal">Founding Engineer, Full Stack &ndash; Retroflow</div>
+                  <span className="font-mono text-xs text-muted-3 shrink-0">2025 &ndash; Present</span>
+                </div>
+                <div className="text-sm text-muted-2 leading-[1.6] w-full">Built and shipped a production SaaS platform end-to-end using React, Firebase, Stripe, and LLM APIs, growing organically to 1,600 monthly active users; owned data modeling, authentication, subscription billing, and real-time collaboration.</div>
+              </div>
+              <div className="flex flex-col">
+                <div className="flex justify-between items-baseline gap-4 mb-2">
+                  <div className="text-base text-text-head font-normal">Senior Software Engineer, Data Platforms &ndash; Bowhead</div>
+                  <span className="font-mono text-xs text-muted-3 shrink-0">2022 &ndash; 2025</span>
+                </div>
+                <div className="text-sm text-muted-2 leading-[1.6] w-full">Owned data integrity across major system migrations, built automated ingestion pipelines and reconciliation reporting, and shipped internal operations tools as the company scaled toward IPO.</div>
+              </div>
+              <div className="flex flex-col">
+                <div className="flex justify-between items-baseline gap-4 mb-2">
+                  <div className="text-base text-text-head font-normal">Software Engineering Consultant &ndash; Lettuce Innovate</div>
+                  <span className="font-mono text-xs text-muted-3 shrink-0">2020 &ndash; 2022</span>
+                </div>
+                <div className="text-sm text-muted-2 leading-[1.6] w-full">Led technical engagements from discovery to handoff, building custom data and software solutions and automating manual financial and reporting processes.</div>
+              </div>
+              <div className="flex flex-col">
+                <div className="flex justify-between items-baseline gap-4 mb-2">
+                  <div className="text-base text-text-head font-normal">Software Engineer, Analytics &ndash; Nationwide</div>
+                  <span className="font-mono text-xs text-muted-3 shrink-0">2018 &ndash; 2020</span>
+                </div>
+                <div className="text-sm text-muted-2 leading-[1.6] w-full">Automated finance business processes using data engineering and BI, developing validation algorithms for general ledger entries to catch risks and anomalies.</div>
+              </div>
+              <div className="flex flex-col">
+                <div className="flex justify-between items-baseline gap-4 mb-2">
+                  <div className="text-base text-text-head font-normal">Software Engineer, Finance Data Governance &ndash; Nationwide</div>
+                  <span className="font-mono text-xs text-muted-3 shrink-0">2016 &ndash; 2018</span>
+                </div>
+                <div className="text-sm text-muted-2 leading-[1.6] w-full">Conducted risk and control analysis on financial data streams, built forecasting models for revenue and expenses, and standardized financial data pipelines.</div>
+              </div>
+            </div>
+
+            <div className="text-sm text-muted-2 mt-10 mb-3">Technologies I've worked with</div>
+            <div className="flex flex-col gap-[10px]">
+              <div className="flex items-baseline gap-2">
+                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">Stack</span>
+                <span className="font-mono text-xs text-muted-2">TypeScript, Python, React, Node.js</span>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">Data</span>
+                <span className="font-mono text-xs text-muted-2">SQL, ETL/ELT, data modeling, analytics pipelines</span>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">Infra</span>
+                <span className="font-mono text-xs text-muted-2">Firebase, Postgres, AWS, Azure</span>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">Systems</span>
+                <span className="font-mono text-xs text-muted-2">real-time apps, event-driven architecture</span>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">Product</span>
+                <span className="font-mono text-xs text-muted-2">analytics instrumentation, funnel design, experimentation</span>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">AI</span>
+                <span className="font-mono text-xs text-muted-2">LLM APIs, agent workflows</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
+
       {/* Writing Section - Alternating Color */}
       {/* <section id="writing" className="w-full bg-bg">
         <div className="max-w-[860px] mx-auto px-[20px] py-[72px]">
@@ -330,7 +344,7 @@ export default function Home() {
 
       {/* Get in Touch Section - Alternating Color */}
       <ScrollReveal>
-        <section id="contact" className="w-full bg-bg">
+        <section id="contact" className="w-full bg-bg-alt">
           <div className="max-w-[860px] mx-auto px-[20px] py-[72px]">
             <div className="flex items-center gap-4 mb-[48px]">
               <h2 className="font-serif text-2xl font-bold text-text-head tracking-[0.01em] whitespace-nowrap">
