@@ -10,12 +10,21 @@ export type Copy = string | { standIn: string };
 export const standIn = (text: string): Copy => ({ standIn: text });
 
 export const site = {
+  /**
+   * Turn sections on/off. Flip `writing` to true once real posts exist in
+   * src/content/posts.ts; that re-enables the homepage section, nav link,
+   * hero link and the /writing pages.
+   */
+  features: {
+    writing: false,
+    offTheClock: false,
+  },
+
   name: "Mark Fick",
   location: "Seattle, WA",
   email: "markfick31415@gmail.com",
   linkedin: "https://linkedin.com/in/mark-fick",
   github: "https://github.com/marqfiq",
-  resume: "#", // TODO: link a résumé PDF (e.g. /mark-fick-resume.pdf in /public)
 
   hero: {
     kicker: "Technical founder · Seattle",
@@ -47,7 +56,7 @@ export const site = {
   principles: [
     {
       title: "The bottleneck moved.",
-      body: "AI made writing code cheap. The hard part is now review, coordination, and deciding what's worth building at all — so that's where I spend my attention.",
+      body: "AI made writing code cheap. The hard part is now review, coordination, and deciding what's worth building at all. So that's where I spend my attention.",
     },
     {
       title: "Fit the workflow, don't add process.",
@@ -55,7 +64,7 @@ export const site = {
     },
     {
       title: "Find where it breaks under pressure.",
-      body: "Give me a short time with a team or system and I'll have a working model of where the friction comes from — and which part is worth fixing first.",
+      body: "Give me a short time with a team or system and I'll have a working model of where the friction comes from and which part is worth fixing first.",
     },
   ],
 
@@ -84,6 +93,6 @@ export const site = {
 
   contact: {
     pitch:
-      "I'm most useful to teams figuring out how AI changes their development workflow — and to anyone building tools for engineers. If that's you, or you just want to trade notes, say hi.",
+      "I'm most useful to teams figuring out how to get the most of AI. If that's you, or you just want to trade notes, say hi.",
   },
 };

@@ -24,7 +24,11 @@ const Arrow = () => (
 );
 
 export default function Home() {
-  const { hero, now, principles, experience, offTheClock, contact } = site;
+  const { hero, now, principles, experience, offTheClock, contact, features } = site;
+
+  // Number only the sections that are switched on, so hidden ones leave no gaps.
+  const sectionOrder = ["work", "principles", features.writing && "writing", "experience", features.offTheClock && "offTheClock"].filter(Boolean);
+  const num = (id: string) => String(sectionOrder.indexOf(id) + 1).padStart(2, "0");
 
   return (
     <main className="mx-auto max-w-[1080px] px-4 sm:px-6">
@@ -42,9 +46,15 @@ export default function Home() {
             <a href="#contact" className="group inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper">
               Get in touch <Arrow />
             </a>
-            <Link href="/writing" className="group inline-flex items-center gap-2 text-sm font-medium text-ink">
-              <span className="link-underline">Read my writing</span> <Arrow />
-            </Link>
+            {features.writing ? (
+              <Link href="/writing" className="group inline-flex items-center gap-2 text-sm font-medium text-ink">
+                <span className="link-underline">Read my writing</span> <Arrow />
+              </Link>
+            ) : (
+              <a href="#work" className="group inline-flex items-center gap-2 text-sm font-medium text-ink">
+                <span className="link-underline">See what I&apos;ve built</span> <Arrow />
+              </a>
+            )}
           </div>
           <p className="mt-8 inline-flex items-center gap-2.5 text-sm text-ink-2">
             <span className="relative flex h-2 w-2">
@@ -97,7 +107,7 @@ export default function Home() {
       {/* ---------------- Work ---------------- */}
       <section id="work" className="pb-24">
         <ScrollReveal>
-          <SectionHead num="01" title="Things I've built" />
+          <SectionHead num={num("work")} title="Things I've built" />
         </ScrollReveal>
 
         {/* Featured: RetroFlow */}
@@ -219,7 +229,7 @@ export default function Home() {
       {/* ---------------- Principles ---------------- */}
       <section className="pb-24">
         <ScrollReveal>
-          <SectionHead num="02" title="How I think about building" />
+          <SectionHead num={num("principles")} title="How I think about building" />
         </ScrollReveal>
         <div className="grid gap-10 md:grid-cols-3">
           {principles.map((p, i) => (
@@ -232,11 +242,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------------- Writing ---------------- */}
+      {/* ---------------- Writing (toggle: site.features.writing) ---------------- */}
+      {features.writing && (
       <section id="writing" className="pb-24">
         <ScrollReveal>
           <SectionHead
-            num="03"
+            num={num("writing")}
             title="Writing"
             aside={
               <Link href="/writing" className="group hidden items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-ink-2 sm:inline-flex">
@@ -267,16 +278,17 @@ export default function Home() {
           All posts <Arrow />
         </Link>
       </section>
+      )}
 
       {/* ---------------- Experience ---------------- */}
       <section id="experience" className="pb-24">
         <ScrollReveal>
           <SectionHead
-            num="04"
+            num={num("experience")}
             title="Where I've been"
             aside={
-              <a href={site.resume} className="group hidden items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-ink-2 sm:inline-flex">
-                <span className="link-underline stand-in" title="Stand-in link — add your résumé PDF">Résumé</span> <Arrow />
+              <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="group hidden items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-ink-2 sm:inline-flex">
+                <span className="link-underline">Full history on LinkedIn</span> <Arrow />
               </a>
             }
           />
@@ -301,13 +313,17 @@ export default function Home() {
           <p className="mt-6 font-mono text-xs leading-relaxed text-muted">
             Usual tools: TypeScript · Python · React · Node · SQL · Firebase · Postgres · AWS · LLM APIs & agent workflows
           </p>
+          <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="group mt-6 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-ink-2 sm:hidden">
+            Full history on LinkedIn <Arrow />
+          </a>
         </ScrollReveal>
       </section>
 
-      {/* ---------------- Off the clock ---------------- */}
+      {/* ---------------- Off the clock (toggle: site.features.offTheClock) ---------------- */}
+      {features.offTheClock && (
       <section className="pb-24">
         <ScrollReveal>
-          <SectionHead num="05" title="Off the clock" />
+          <SectionHead num={num("offTheClock")} title="Off the clock" />
         </ScrollReveal>
         <div className="grid gap-6 md:grid-cols-3">
           {offTheClock.map((item, i) => (
@@ -322,6 +338,7 @@ export default function Home() {
           ))}
         </div>
       </section>
+      )}
 
       {/* ---------------- Contact ---------------- */}
       <section id="contact" className="pb-28">

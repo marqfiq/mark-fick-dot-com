@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+import { site } from "@/content/site";
 import { sortedPosts, formatDate } from "@/content/posts";
 
 export const metadata: Metadata = {
@@ -8,6 +10,9 @@ export const metadata: Metadata = {
 };
 
 export default function WritingIndex() {
+  // Hidden until there are real posts: flip site.features.writing to true.
+  if (!site.features.writing) notFound();
+
   return (
     <main className="mx-auto max-w-[820px] px-4 pb-28 pt-32 sm:px-6 md:pt-40">
       <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted">Writing</p>

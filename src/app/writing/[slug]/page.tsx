@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { posts, getPost, formatDate, sortedPosts } from "@/content/posts";
+import { site } from "@/content/site";
 
 export const dynamicParams = false;
 
+// Static export needs at least one param, so posts are always listed here;
+// while site.features.writing is off, each page renders the 404 page instead.
 export function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
 }
@@ -26,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function PostPage({ params }: Props) {
   const { slug } = await params;
   const post = getPost(slug);
-  if (!post) notFound();
+  if (!post || !site.features.writing) notFound();
 
   const idx = sortedPosts.findIndex((p) => p.slug === slug);
   const next = sortedPosts[idx + 1] ?? sortedPosts[0];

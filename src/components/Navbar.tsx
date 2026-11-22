@@ -3,9 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
+import { site } from "@/content/site";
+
 const links = [
   { href: "/#work", label: "Work" },
-  { href: "/writing", label: "Writing" },
+  ...(site.features.writing ? [{ href: "/writing", label: "Writing" }] : []),
   { href: "/#now", label: "Now" },
   { href: "/#contact", label: "Contact" },
 ];
@@ -49,11 +51,8 @@ export default function Navbar() {
       }`}
     >
       <nav ref={navRef} className="relative mx-auto flex max-w-[1080px] items-center justify-between px-4 py-4 sm:px-6">
-        <Link href="/" className="group flex items-baseline gap-2" onClick={() => setIsOpen(false)}>
-          <span className="font-display text-xl font-semibold tracking-tight text-ink">Mark Fick</span>
-          <span className="hidden font-mono text-[0.62rem] uppercase tracking-[0.18em] text-muted sm:inline">
-            builder · seattle
-          </span>
+        <Link href="/" className="font-display text-xl font-semibold tracking-tight text-ink" onClick={() => setIsOpen(false)}>
+          Mark Fick
         </Link>
 
         <div className="hidden items-center gap-7 md:flex">
