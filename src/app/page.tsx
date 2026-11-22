@@ -1,417 +1,343 @@
-import Navbar from "../components/Navbar";
-import ScrollReveal from "../components/ScrollReveal";
+import Link from "next/link";
+import ScrollReveal from "@/components/ScrollReveal";
+import Text from "@/components/StandIn";
+import CopyEmail from "@/components/CopyEmail";
+import { site } from "@/content/site";
+import { sortedPosts, formatDate } from "@/content/posts";
+
+function SectionHead({ num, title, aside }: { num: string; title: string; aside?: React.ReactNode }) {
+  return (
+    <div className="mb-10 flex items-end justify-between gap-6 border-b border-rule pb-4">
+      <div className="flex items-baseline gap-4">
+        <span className="font-mono text-xs text-accent">{num}</span>
+        <h2 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl">{title}</h2>
+      </div>
+      {aside}
+    </div>
+  );
+}
+
+const Arrow = () => (
+  <span aria-hidden className="inline-block transition-transform duration-200 group-hover:translate-x-1">
+    →
+  </span>
+);
 
 export default function Home() {
-  return (
-    <main className="w-full">
-      {/* Hero Section */}
-      <section id="about" className="w-full bg-bg min-h-[100dvh] flex flex-col">
-        <div className="max-w-[860px] w-full mx-auto px-[20px] shrink-0">
-          <Navbar />
-        </div>
-        <ScrollReveal fadeOnly className="flex-1 flex flex-col">
-          <div className="max-w-[860px] w-full mx-auto px-[20px] pt-[32px] pb-[72px] flex-1 flex flex-col justify-center items-start">
-            <img
-              src="/profile.jpg"
-              alt="Mark Fick"
-              className="w-[124px] h-[124px] md:w-[172px] md:h-[172px] object-cover rounded-[16px] md:rounded-[20px] mb-[32px] border border-border-2 transition-all duration-300"
-            />
-            {/* Converted header sizing to use dynamic base relative rem scaling */}
-            <h1 className="font-serif text-[clamp(1.5rem,14vw,3rem)] whitespace-nowrap font-normal leading-[0.95] tracking-[-0.04em] text-text-head m-0 mb-[36px]">
-              Hi, <em className="italic text-accent-rose">I'm Mark</em>
-            </h1>
-            <div className="flex flex-col gap-5 text-base text-text-body leading-[1.65] font-normal">
-              <p>
-                I'm a technical founder and builder based in Seattle.
-              </p>
-              <p>
-                I'm currently building <strong className="text-text-strong font-medium">RetroFlow</strong>, a platform designed to help teams surface and resolve friction in their development process - especially as AI increases the volume and speed of output. I focus on turning real workflow problems into products and systems that teams can actually use.
-              </p>
-              <p>
-                Outside of that, I spend my time tinkering with side projects, traveling, or enjoying a good cup of coffee.
-              </p>
-            </div>
+  const { hero, now, principles, experience, offTheClock, contact } = site;
 
-            <a
-              href="https://linkedin.com/in/mark-fick"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 mt-8 text-sm text-text-mid font-medium hover:text-text-head transition-colors group"
-            >
-              linkedin
-              <svg className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+  return (
+    <main className="mx-auto max-w-[1080px] px-4 sm:px-6">
+      {/* ---------------- Hero ---------------- */}
+      <section id="about" className="grid items-center gap-12 pb-20 pt-32 md:grid-cols-[1.45fr_1fr] md:pb-28 md:pt-40">
+        <ScrollReveal>
+          <p className="mb-6 font-mono text-xs uppercase tracking-[0.2em] text-muted">{hero.kicker}</p>
+          <h1 className="font-display text-[clamp(2.6rem,7vw,4.9rem)] font-medium leading-[0.98] tracking-[-0.025em] text-ink">
+            {hero.headline.before}
+            <em className="font-normal italic text-accent">{hero.headline.emphasis}</em>
+            {hero.headline.after}
+          </h1>
+          <p className="mt-8 max-w-[560px] text-lg leading-relaxed text-ink-2">{hero.intro}</p>
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <a href="#contact" className="group inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-paper">
+              Get in touch <Arrow />
             </a>
+            <Link href="/writing" className="group inline-flex items-center gap-2 text-sm font-medium text-ink">
+              <span className="link-underline">Read my writing</span> <Arrow />
+            </Link>
+          </div>
+          <p className="mt-8 inline-flex items-center gap-2.5 text-sm text-ink-2">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-50" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+            </span>
+            <Text value={hero.availability} />
+          </p>
+        </ScrollReveal>
+
+        <ScrollReveal delay={150} className="justify-self-center md:justify-self-end">
+          <figure className="relative w-[250px] rotate-[2.5deg] bg-card p-3 pb-4 shadow-[0_18px_40px_-18px_rgba(60,35,20,0.45)] transition-transform duration-500 hover:rotate-0 sm:w-[290px]">
+            <span aria-hidden className="absolute -top-3 left-1/2 h-6 w-24 -translate-x-1/2 -rotate-3 bg-highlight/80" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/profile.jpg" alt="Mark Fick" className="aspect-[4/5] w-full object-cover" />
+            <figcaption className="mt-3 text-center font-display text-base italic text-ink-2">{hero.photoCaption}</figcaption>
+          </figure>
+        </ScrollReveal>
+      </section>
+
+      {/* ---------------- Now ---------------- */}
+      <section id="now" className="pb-24">
+        <ScrollReveal>
+          <div className="relative overflow-hidden rounded-3xl border border-rule bg-card px-6 py-10 sm:px-10">
+            {/* coffee ring */}
+            <svg aria-hidden viewBox="0 0 200 200" className="pointer-events-none absolute -right-10 -top-12 h-56 w-56 text-accent opacity-[0.12]">
+              <circle cx="100" cy="100" r="78" fill="none" stroke="currentColor" strokeWidth="7" strokeDasharray="300 18 90 12" />
+              <circle cx="100" cy="100" r="70" fill="none" stroke="currentColor" strokeWidth="1.5" />
+            </svg>
+            <div className="mb-8 flex flex-wrap items-baseline justify-between gap-3">
+              <h2 className="font-display text-3xl font-semibold tracking-tight text-ink">
+                Now<span className="text-accent">.</span>
+              </h2>
+              <span className="font-mono text-xs text-muted">updated {now.updated}</span>
+            </div>
+            <dl className="grid gap-x-12 gap-y-6 md:grid-cols-2">
+              {now.items.map((item) => (
+                <div key={item.label} className="grid grid-cols-[110px_1fr] gap-4 border-t border-rule pt-4">
+                  <dt className="font-mono text-xs uppercase tracking-[0.12em] text-muted">{item.label}</dt>
+                  <dd className="text-ink-2">
+                    <Text value={item.text} />
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </ScrollReveal>
       </section>
 
-      {/* What I'm up to Section - Alternating Color */}
-      {/* <ScrollReveal>
-        <section className="w-full bg-bg-alt">
-          <div className="max-w-[860px] mx-auto px-[20px] py-[72px]">
-            <div className="flex items-center gap-4 mb-[48px]">
-              <h2 className="font-serif text-2xl font-bold text-text-head tracking-[0.01em] whitespace-nowrap">
-                What I'm up to
-              </h2>
-              <div className="flex-1 h-[0.5px] bg-border"></div>
-            </div>
+      {/* ---------------- Work ---------------- */}
+      <section id="work" className="pb-24">
+        <ScrollReveal>
+          <SectionHead num="01" title="Things I've built" />
+        </ScrollReveal>
 
-            <div className="flex flex-col gap-5 text-base text-text-body leading-[1.65] max-w-[620px] font-normal">
-              <p>
-                I'm building <strong className="text-text-strong font-medium">RetroFlow</strong> — a platform that helps engineering teams surface and fix the friction in how they actually work.
-              </p>
-              <p>
-                Most of my thinking right now is about what AI is doing to software development. Increased output is shifting the bottleneck away from writing code and toward review, coordination, and decision-making. RetroFlow is how I'm exploring and solving that in practice.
-              </p>
-              <p>
-                Beyond that, I'm experimenting at the intersection of AI and engineering systems — how tools become more autonomous, how development processes evolve, and what infrastructure teams actually need as they scale.
-              </p>
-              <p>
-                <strong className="text-text-strong font-medium">What I'm good at:</strong> I pick up quickly on how systems behave - especially where they break under pressure. Give me a short amount of time with a team or workflow and I'll have a working model of where the friction is coming from and what's worth fixing. I love building simple, practical solutions that fit into how teams already work rather than layering new process on top.
-              </p>
+        {/* Featured: RetroFlow */}
+        <ScrollReveal>
+          <a
+            href="https://retroflow.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group grid overflow-hidden rounded-3xl border border-rule bg-card transition-shadow duration-300 hover:shadow-[0_24px_50px_-28px_rgba(60,35,20,0.5)] md:grid-cols-[1fr_1.1fr]"
+          >
+            <div className="flex flex-col justify-between gap-8 p-7 sm:p-10">
+              <div>
+                <div className="mb-4 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.14em]">
+                  <span className="rounded-full bg-accent px-2.5 py-1 text-paper">Building now</span>
+                  <span className="text-muted">retroflow.io</span>
+                </div>
+                <h3 className="font-display text-4xl font-semibold tracking-tight text-ink">RetroFlow</h3>
+                <p className="mt-4 max-w-[440px] leading-relaxed text-ink-2">
+                  Async-first retrospectives and workflow insight for engineering teams — built around the feedback loops that
+                  actually change how teams work. I built it end-to-end: product, data model, billing, real-time collaboration.
+                </p>
+              </div>
+              <div className="flex items-end gap-8">
+                <div>
+                  <div className="font-display text-4xl font-medium text-ink">1,600</div>
+                  <div className="font-mono text-xs text-muted">monthly active users</div>
+                </div>
+                <div>
+                  <div className="font-display text-4xl font-medium text-ink">0 → 1</div>
+                  <div className="font-mono text-xs text-muted">solo-built, organic growth</div>
+                </div>
+              </div>
             </div>
+            {/* Illustrated board (CSS stand-in for a product screenshot) */}
+            <div className="relative min-h-[260px] bg-paper-2 p-6 sm:p-8" aria-hidden>
+              <div className="grid h-full grid-cols-3 gap-3 transition-transform duration-500 group-hover:scale-[1.02]">
+                {[
+                  { h: "Went well", c: "bg-[#d9e4c8]", n: [70, 45, 60] },
+                  { h: "Friction", c: "bg-[#f2c9b3]", n: [55, 80, 40, 50] },
+                  { h: "Try next", c: "bg-[#f3e1a6]", n: [65, 50] },
+                ].map((col, i) => (
+                  <div key={col.h} className="flex flex-col gap-2.5">
+                    <div className="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-muted">{col.h}</div>
+                    {col.n.map((w, j) => (
+                      <div
+                        key={j}
+                        className={`${col.c} rounded-md p-2.5 shadow-sm`}
+                        style={{ transform: `rotate(${((i + j) % 3) - 1}deg)` }}
+                      >
+                        <div className="h-1.5 rounded bg-black/20" style={{ width: `${w}%` }} />
+                        <div className="mt-1.5 h-1.5 w-[85%] rounded bg-black/10" />
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </a>
+        </ScrollReveal>
 
-            <a
-              href="https://retroflow.io"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 mt-8 text-sm text-text-mid font-medium hover:text-text-head transition-colors group"
-            >
-              Find out more at retroflow.io
-              <svg className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+        <div className="mt-6 grid gap-6 md:grid-cols-3">
+          {/* Ambry */}
+          <ScrollReveal>
+            <a href="https://ambryjournal.com" target="_blank" rel="noopener noreferrer" className="group flex h-full flex-col overflow-hidden rounded-3xl border border-rule bg-card">
+              <div className="relative aspect-[16/10] overflow-hidden bg-[#efe3cf] p-6 dark:bg-[#2c241d]" aria-hidden>
+                <div className="h-full rotate-[-2deg] rounded-sm bg-[#fffaf0] p-4 shadow-md transition-transform duration-500 group-hover:rotate-0 dark:bg-[#3a3028]">
+                  <div className="font-display text-sm italic text-[#94586f]">Tuesday, a good one</div>
+                  {[90, 75, 82, 60].map((w, i) => (
+                    <div key={i} className="mt-3 border-b border-[#e3d6c2] pb-0.5 dark:border-[#51463c]">
+                      <div className="h-1.5 rounded bg-[#cbb9a2]/70" style={{ width: `${w}%` }} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="flex flex-1 flex-col p-6">
+                <span className="font-mono text-xs text-muted">ambryjournal.com</span>
+                <h3 className="mt-2 font-display text-2xl font-semibold text-ink">Ambry Journal</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-2">
+                  A journaling app I built as a gift for my partner. It started as software for an audience of one and grew into a
+                  product I&apos;m proud of.
+                </p>
+              </div>
             </a>
-          </div>
-        </section>
-      </ScrollReveal> */}
+          </ScrollReveal>
 
-      {/* Building Section - Alternating Color */}
-      <ScrollReveal>
-        <section className="w-full bg-bg-alt">
-          <div className="max-w-[860px] mx-auto px-[20px] py-[72px]">
-            <div className="flex items-center gap-4 mb-[48px]">
-              <h2 className="font-serif text-2xl font-bold text-text-head tracking-[0.01em] whitespace-nowrap">
-                Past Projects
-              </h2>
-              <div className="flex-1 h-[0.5px] bg-border"></div>
-            </div>
+          {[
+            {
+              href: "https://retroflow.io/ai-context-audit",
+              url: "retroflow.io/ai-context-audit",
+              img: "/agent-context-audit.png",
+              title: "Agent Context Audit",
+              body: "Turns scattered repo knowledge into reusable context for AI coding agents, so they stop rediscovering your codebase every session.",
+            },
+            {
+              href: "https://retroflow.io/ai-project-roi",
+              url: "retroflow.io/ai-project-roi",
+              img: "/ai-project-roi.png",
+              title: "AI Project ROI",
+              body: "A feasibility and ROI calculator that scores whether an AI project is actually worth building — with hours and value saved.",
+            },
+          ].map((p, i) => (
+            <ScrollReveal key={p.title} delay={(i + 1) * 100}>
+              <a href={p.href} target="_blank" rel="noopener noreferrer" className="group flex h-full flex-col overflow-hidden rounded-3xl border border-rule bg-card">
+                <div className="aspect-[16/10] overflow-hidden bg-paper-2">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={p.img} alt={p.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" />
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <span className="font-mono text-xs text-muted">{p.url}</span>
+                  <h3 className="mt-2 font-display text-2xl font-semibold text-ink">{p.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-2">{p.body}</p>
+                </div>
+              </a>
+            </ScrollReveal>
+          ))}
+        </div>
+      </section>
 
-            <div className="flex flex-col pb-8 mb-8 border-b-[0.5px] border-border-2 last:border-b-0 last:pb-0 last:mb-0">
-              <div className="flex justify-between items-baseline mb-2">
-                <div className="font-mono text-muted-3 text-xs">01</div>
-                <a href="https://retroflow.io" target="_blank" rel="noopener noreferrer" className="font-mono text-xs text-muted-2 transition-colors duration-150 hover:text-text-head">
-                  retroflow.io
-                </a>
-              </div>
-              <div className="flex justify-between items-baseline mb-3">
-                <div className="text-xl font-medium text-text-head tracking-[-0.02em]">
-                  RetroFlow
-                </div>
-                <span className="font-mono text-xs text-muted-3">
-                  &nbsp;
-                </span>
-              </div>
-              <p className="text-sm text-muted-1 leading-[1.6] w-full max-w-none">
-                Retrospective tooling for engineering teams. Async-first, built around the feedback
-                loops that actually change how teams work.
-              </p>
-            </div>
+      {/* ---------------- Principles ---------------- */}
+      <section className="pb-24">
+        <ScrollReveal>
+          <SectionHead num="02" title="How I think about building" />
+        </ScrollReveal>
+        <div className="grid gap-10 md:grid-cols-3">
+          {principles.map((p, i) => (
+            <ScrollReveal key={p.title} delay={i * 100}>
+              <div className="font-display text-6xl font-light italic leading-none text-accent/70">{i + 1}</div>
+              <h3 className="mt-4 font-display text-2xl font-semibold leading-snug text-ink">{p.title}</h3>
+              <p className="mt-3 leading-relaxed text-ink-2">{p.body}</p>
+            </ScrollReveal>
+          ))}
+        </div>
+      </section>
 
-            <div className="flex flex-col pb-8 mb-8 border-b-[0.5px] border-border-2">
-              <div className="flex justify-between items-baseline mb-2">
-                <div className="font-mono text-muted-3 text-xs">02</div>
-                <a href="https://ambryjournal.com" target="_blank" rel="noopener noreferrer" className="font-mono text-xs text-muted-2 transition-colors duration-150 hover:text-text-head">
-                  ambryjournal.com
-                </a>
-              </div>
-              <div className="flex justify-between items-baseline mb-3">
-                <div className="text-xl font-medium text-text-head tracking-[-0.02em]">
-                  Ambry Journal
-                </div>
-                <span className="font-mono text-xs text-muted-3">
-                  &nbsp;
-                </span>
-              </div>
-              <p className="text-sm text-muted-1 leading-[1.6] w-full max-w-none">
-                A simple journaling app I built for my partner. It started as a personal project and became a product I'm proud of.
-              </p>
-            </div>
+      {/* ---------------- Writing ---------------- */}
+      <section id="writing" className="pb-24">
+        <ScrollReveal>
+          <SectionHead
+            num="03"
+            title="Writing"
+            aside={
+              <Link href="/writing" className="group hidden items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-ink-2 sm:inline-flex">
+                <span className="link-underline">All posts</span> <Arrow />
+              </Link>
+            }
+          />
+        </ScrollReveal>
+        <ul>
+          {sortedPosts.slice(0, 3).map((post) => (
+            <ScrollReveal key={post.slug}>
+              <li className="border-b border-rule">
+                <Link href={`/writing/${post.slug}`} className="group grid gap-2 py-6 sm:grid-cols-[110px_1fr_auto] sm:items-baseline sm:gap-8">
+                  <span className="font-mono text-xs text-muted">{formatDate(post.date)}</span>
+                  <span>
+                    <span className="font-display text-2xl font-medium text-ink transition-colors group-hover:text-accent">
+                      <span className={post.standIn ? "stand-in" : ""}>{post.title}</span>
+                    </span>
+                    <span className="mt-1 block text-ink-2">{post.excerpt}</span>
+                  </span>
+                  <span className="hidden font-mono text-xs text-muted sm:block">{post.readingMinutes} min</span>
+                </Link>
+              </li>
+            </ScrollReveal>
+          ))}
+        </ul>
+        <Link href="/writing" className="group mt-6 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-ink-2 sm:hidden">
+          All posts <Arrow />
+        </Link>
+      </section>
 
-            <div className="flex flex-col pb-8 mb-8 border-b-[0.5px] border-border-2">
-              <div className="flex justify-between items-baseline mb-2">
-                <div className="font-mono text-muted-3 text-xs">03</div>
-                <a href="https://retroflow.io/ai-context-audit" target="_blank" rel="noopener noreferrer" className="font-mono text-xs text-muted-2 transition-colors duration-150 hover:text-text-head">
-                  retroflow.io/ai-context-audit
-                </a>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1.12fr] gap-6 items-start mt-1">
-                <div className="flex flex-col">
-                  <h3 className="text-xl font-medium text-text-head tracking-[-0.02em] mb-3">
-                    Agent Context Audit
-                  </h3>
-                  <p className="text-sm text-muted-1 leading-[1.6] w-full max-w-none">
-                    A focused audit that turns scattered repo knowledge into reusable context for AI coding agents: architecture, workflows, conventions, known pitfalls, and risk areas, so agents start with the context they need instead of rediscovering the codebase from scratch.
-                  </p>
+      {/* ---------------- Experience ---------------- */}
+      <section id="experience" className="pb-24">
+        <ScrollReveal>
+          <SectionHead
+            num="04"
+            title="Where I've been"
+            aside={
+              <a href={site.resume} className="group hidden items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-ink-2 sm:inline-flex">
+                <span className="link-underline stand-in" title="Stand-in link — add your résumé PDF">Résumé</span> <Arrow />
+              </a>
+            }
+          />
+        </ScrollReveal>
+        <ScrollReveal>
+          <p className="mb-8 max-w-[640px] text-lg leading-relaxed text-ink-2">
+            Ten years from finance data governance to founding engineer. The common thread:{" "}
+            <span className="marker text-ink">making systems that people can actually trust</span>, then making them faster.
+          </p>
+          <ol>
+            {experience.map((job) => (
+              <li key={job.role + job.years} className="grid gap-1 border-t border-rule py-5 sm:grid-cols-[110px_1fr_1.3fr] sm:gap-8">
+                <span className="font-mono text-xs text-muted sm:pt-1">{job.years}</span>
+                <div>
+                  <div className="font-medium text-ink">{job.org}</div>
+                  <div className="text-sm text-ink-2">{job.role}</div>
                 </div>
-                <a
-                  href="https://retroflow.io/ai-context-audit"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative group overflow-hidden rounded-[12px] border border-border-2 aspect-[16/9] w-full bg-surface shadow-md block"
-                >
-                  <img
-                    src="/agent-context-audit.png"
-                    alt="Agent Context Audit"
-                    className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-[1.05]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                </a>
-              </div>
-            </div>
+                <p className="text-sm leading-relaxed text-muted">{job.note}</p>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-6 font-mono text-xs leading-relaxed text-muted">
+            Usual tools: TypeScript · Python · React · Node · SQL · Firebase · Postgres · AWS · LLM APIs & agent workflows
+          </p>
+        </ScrollReveal>
+      </section>
 
-            <div className="flex flex-col pb-8 mb-8 border-b-[0.5px] border-border-2 last:border-b-0 last:pb-0 last:mb-0">
-              <div className="flex justify-between items-baseline mb-2">
-                <div className="font-mono text-muted-3 text-xs">04</div>
-                <a href="https://retroflow.io/ai-project-roi" target="_blank" rel="noopener noreferrer" className="font-mono text-xs text-muted-2 transition-colors duration-150 hover:text-text-head">
-                  retroflow.io/ai-project-roi
-                </a>
+      {/* ---------------- Off the clock ---------------- */}
+      <section className="pb-24">
+        <ScrollReveal>
+          <SectionHead num="05" title="Off the clock" />
+        </ScrollReveal>
+        <div className="grid gap-6 md:grid-cols-3">
+          {offTheClock.map((item, i) => (
+            <ScrollReveal key={item.label} delay={i * 100}>
+              <div className="h-full rounded-2xl bg-paper-2 p-6">
+                <div className="font-display text-xl italic text-rose">{item.label}</div>
+                <p className="mt-2 text-ink-2">
+                  <Text value={item.text} />
+                </p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1.12fr] gap-6 items-start mt-1">
-                <div className="flex flex-col">
-                  <h3 className="text-xl font-medium text-text-head tracking-[-0.02em] mb-3">
-                    AI Project ROI
-                  </h3>
-                  <p className="text-sm text-muted-1 leading-[1.6] w-full max-w-none">
-                    A feasibility and ROI calculator designed to help teams analyze whether an AI project is actually worth building. It scores readiness across data quality, stakeholders, and complexity, outlining clear implementation paths with estimated hours and value saved.
-                  </p>
-                </div>
-                <a
-                  href="https://retroflow.io/ai-project-roi"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative group overflow-hidden rounded-[12px] border border-border-2 aspect-[16/9] w-full bg-surface shadow-md block"
-                >
-                  <img
-                    src="/ai-project-roi.png"
-                    alt="AI Project ROI"
-                    className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-[1.05]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-      </ScrollReveal>
+            </ScrollReveal>
+          ))}
+        </div>
+      </section>
 
-      {/* Background Section - Standard Color */}
-      <ScrollReveal>
-        <section id="work" className="w-full bg-bg">
-          <div className="max-w-[860px] mx-auto px-[20px] py-[72px]">
-            <div className="flex items-center gap-4 mb-[48px]">
-              <h2 className="font-serif text-2xl font-bold text-text-head tracking-[0.01em] whitespace-nowrap">
-                Experience
-              </h2>
-              <div className="flex-1 h-[0.5px] bg-border"></div>
-            </div>
-
-            <div className="flex flex-col gap-8">
-              <div className="flex flex-col">
-                <div className="flex justify-between items-baseline gap-4 mb-2">
-                  <div className="text-base text-text-head font-normal">Founding Engineer, Full Stack &ndash; Retroflow</div>
-                  <span className="font-mono text-xs text-muted-3 shrink-0">2025 &ndash; Present</span>
-                </div>
-                <div className="text-sm text-muted-2 leading-[1.6] w-full">Built and shipped a production SaaS platform end-to-end using React, Firebase, Stripe, and LLM APIs, growing organically to 1,600 monthly active users; owned data modeling, authentication, subscription billing, and real-time collaboration.</div>
-              </div>
-              <div className="flex flex-col">
-                <div className="flex justify-between items-baseline gap-4 mb-2">
-                  <div className="text-base text-text-head font-normal">Senior Software Engineer, Data Platforms &ndash; Bowhead</div>
-                  <span className="font-mono text-xs text-muted-3 shrink-0">2022 &ndash; 2025</span>
-                </div>
-                <div className="text-sm text-muted-2 leading-[1.6] w-full">Owned data integrity across major system migrations, built automated ingestion pipelines and reconciliation reporting, and shipped internal operations tools as the company scaled toward IPO.</div>
-              </div>
-              <div className="flex flex-col">
-                <div className="flex justify-between items-baseline gap-4 mb-2">
-                  <div className="text-base text-text-head font-normal">Software Engineering Consultant &ndash; Lettuce Innovate</div>
-                  <span className="font-mono text-xs text-muted-3 shrink-0">2020 &ndash; 2022</span>
-                </div>
-                <div className="text-sm text-muted-2 leading-[1.6] w-full">Led technical engagements from discovery to handoff, building custom data and software solutions and automating manual financial and reporting processes.</div>
-              </div>
-              <div className="flex flex-col">
-                <div className="flex justify-between items-baseline gap-4 mb-2">
-                  <div className="text-base text-text-head font-normal">Software Engineer, Analytics &ndash; Nationwide</div>
-                  <span className="font-mono text-xs text-muted-3 shrink-0">2018 &ndash; 2020</span>
-                </div>
-                <div className="text-sm text-muted-2 leading-[1.6] w-full">Automated finance business processes using data engineering and BI, developing validation algorithms for general ledger entries to catch risks and anomalies.</div>
-              </div>
-              <div className="flex flex-col">
-                <div className="flex justify-between items-baseline gap-4 mb-2">
-                  <div className="text-base text-text-head font-normal">Software Engineer, Finance Data Governance &ndash; Nationwide</div>
-                  <span className="font-mono text-xs text-muted-3 shrink-0">2016 &ndash; 2018</span>
-                </div>
-                <div className="text-sm text-muted-2 leading-[1.6] w-full">Conducted risk and control analysis on financial data streams, built forecasting models for revenue and expenses, and standardized financial data pipelines.</div>
-              </div>
-            </div>
-
-            <div className="text-sm text-muted-2 mt-10 mb-3">Technologies I've worked with</div>
-            <div className="flex flex-col gap-[10px]">
-              <div className="flex items-baseline gap-2">
-                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">Stack</span>
-                <span className="font-mono text-xs text-muted-2">TypeScript, Python, React, Node.js</span>
-              </div>
-              <div className="flex items-baseline gap-2">
-                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">Data</span>
-                <span className="font-mono text-xs text-muted-2">SQL, ETL/ELT, data modeling, analytics pipelines</span>
-              </div>
-              <div className="flex items-baseline gap-2">
-                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">Infra</span>
-                <span className="font-mono text-xs text-muted-2">Firebase, Postgres, AWS, Azure</span>
-              </div>
-              <div className="flex items-baseline gap-2">
-                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">Systems</span>
-                <span className="font-mono text-xs text-muted-2">real-time apps, event-driven architecture</span>
-              </div>
-              <div className="flex items-baseline gap-2">
-                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">Product</span>
-                <span className="font-mono text-xs text-muted-2">analytics instrumentation, funnel design, experimentation</span>
-              </div>
-              <div className="flex items-baseline gap-2">
-                <span className="font-mono text-xs text-muted-3 w-[70px] shrink-0">AI</span>
-                <span className="font-mono text-xs text-muted-2">LLM APIs, agent workflows</span>
-              </div>
-            </div>
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* Writing Section - Alternating Color */}
-      {/* <section id="writing" className="w-full bg-bg">
-        <div className="max-w-[860px] mx-auto px-[20px] py-[72px]">
-          <div className="flex items-center gap-4 mb-[48px]">
-            <h2 className="font-serif text-2xl font-bold text-text-head tracking-[0.01em] whitespace-nowrap">
-              Thinking & Writing
+      {/* ---------------- Contact ---------------- */}
+      <section id="contact" className="pb-28">
+        <ScrollReveal>
+          <div className="rounded-3xl bg-ink px-6 py-14 text-paper sm:px-12 sm:py-16">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-paper/60">Get in touch</p>
+            <h2 className="mt-4 max-w-[700px] font-display text-[clamp(2.2rem,5.5vw,3.8rem)] font-medium leading-[1.02] tracking-tight">
+              Let&apos;s talk about the <em className="italic text-highlight">slow parts</em> of your team.
             </h2>
-            <div className="flex-1 h-[0.5px] bg-border"></div>
-            <a
-              href="/writing"
-              className="font-mono text-xs text-muted-2 whitespace-nowrap transition-colors duration-150 hover:text-text-head hidden md:block"
-            >
-              see all &rarr;
-            </a>
-          </div>
-
-          <div className="grid grid-cols-[1fr_auto] gap-6 items-baseline pb-[24px] mb-[24px] border-b-[0.5px] border-border-2 last:border-b-0 last:pb-0 last:mb-0">
-            <a
-              href="#"
-              className="text-lg text-text-mid font-normal leading-[1.4] transition-colors duration-150 hover:text-text-head"
-            >
-              Why I stopped building features and started counting users
-            </a>
-            <span className="font-mono text-xs text-muted-3 whitespace-nowrap">Apr 2025</span>
-          </div>
-          <div className="grid grid-cols-[1fr_auto] gap-6 items-baseline pb-[24px] mb-[24px] border-b-[0.5px] border-border-2 last:border-b-0 last:pb-0 last:mb-0">
-            <a
-              href="#"
-              className="text-lg text-text-mid font-normal leading-[1.4] transition-colors duration-150 hover:text-text-head"
-            >
-              What a 37k-impression post taught me about positioning copy
-            </a>
-            <span className="font-mono text-xs text-muted-3 whitespace-nowrap">Mar 2025</span>
-          </div>
-          <div className="grid grid-cols-[1fr_auto] gap-6 items-baseline pb-[24px] border-b-[0.5px] border-border-2 last:border-b-0 last:pb-0">
-            <a
-              href="#"
-              className="text-lg text-text-mid font-normal leading-[1.4] transition-colors duration-150 hover:text-text-head"
-            >
-              Building a repeatable content system for a one-person company
-            </a>
-            <span className="font-mono text-xs text-muted-3 whitespace-nowrap">Feb 2025</span>
-          </div>
-
-          <div className="mt-8 text-right md:hidden">
-            <a
-              href="/writing"
-              className="font-mono text-xs text-muted-2 whitespace-nowrap transition-colors duration-150 hover:text-text-head"
-            >
-              see all &rarr;
-            </a>
-          </div>
-        </div>
-      </section> */}
-
-      {/* Get in Touch Section - Alternating Color */}
-      <ScrollReveal>
-        <section id="contact" className="w-full bg-bg-alt">
-          <div className="max-w-[860px] mx-auto px-[20px] py-[72px]">
-            <div className="flex items-center gap-4 mb-[48px]">
-              <h2 className="font-serif text-2xl font-bold text-text-head tracking-[0.01em] whitespace-nowrap">
-                Get in Touch
-              </h2>
-              <div className="flex-1 h-[0.5px] bg-border"></div>
-            </div>
-
-            <div className="flex flex-col gap-8 max-w-[540px]">
-              <p className="text-base text-text-body leading-[1.65] font-normal">
-                Whether you'd like to work with me or find out more about what I'm working on, I'd love to hear from you.
-              </p>
-              <div className="flex flex-wrap items-center gap-6 md:gap-8">
-                <a
-                  href="mailto:markfick31415@gmail.com"
-                  className="inline-flex items-center gap-2 text-sm text-text-mid font-medium hover:text-text-head transition-colors group"
-                >
-                  Email
-                  <svg className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </a>
-                <a
-                  href="https://linkedin.com/in/mark-fick"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-text-mid font-medium hover:text-text-head transition-colors group"
-                >
-                  LinkedIn
-                  <svg className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </a>
-              </div>
+            <p className="mt-6 max-w-[560px] leading-relaxed text-paper/75">{contact.pitch}</p>
+            <div className="mt-8 [&_a]:bg-paper [&_a]:text-ink [&_button]:border-paper/25 [&_button]:text-paper/80">
+              <CopyEmail email={site.email} />
             </div>
           </div>
-        </section>
-      </ScrollReveal>
-
-      {/* Footer - Standard Color */}
-      <footer className="w-full bg-bg-dark border-t border-border-2">
-        <div className="max-w-[860px] mx-auto px-[20px] py-12 flex flex-col items-center gap-5">
-          <div className="flex flex-wrap justify-center items-center gap-4">
-            <a
-              href="https://linkedin.com/in/mark-fick"
-              className="font-mono text-sm text-muted-2 transition-colors duration-150 hover:text-text-head"
-            >
-              linkedin
-            </a>
-            <span className="font-mono text-sm text-muted-3">|</span>
-            <a
-              href="https://github.com/marqfiq"
-              className="font-mono text-sm text-muted-2 transition-colors duration-150 hover:text-text-head"
-            >
-              github
-            </a>
-            <span className="font-mono text-sm text-muted-3">|</span>
-            <a
-              href="mailto:markfick31415@gmail.com"
-              className="font-mono text-sm text-muted-2 transition-colors duration-150 hover:text-text-head"
-            >
-              email
-            </a>
-          </div>
-          <span className="font-mono text-sm text-text-body font-medium tracking-[0.02em]">Mark Fick</span>
-        </div>
-      </footer>
+        </ScrollReveal>
+      </section>
     </main>
   );
 }

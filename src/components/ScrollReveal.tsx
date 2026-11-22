@@ -5,48 +5,36 @@ import React, { useEffect, useRef, useState } from "react";
 interface ScrollRevealProps {
   children: React.ReactNode;
   className?: string;
-  fadeOnly?: boolean;
+  delay?: number;
 }
 
-export default function ScrollReveal({
-  children,
-  className = "",
-  fadeOnly = false,
-}: ScrollRevealProps) {
+/** Fades content up as it enters the viewport. Reduced motion handled in CSS. */
+export default function ScrollReveal({ children, className = "", delay = 0 }: ScrollRevealProps) {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-
+    // Reduced motion is handled in CSS (.reveal is always visible there).
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.unobserve(el);
+          observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
     );
-
     observer.observe(el);
-    return () => observer.unobserve(el);
+    return () => observer.disconnect();
   }, []);
 
   return (
     <div
       ref={ref}
-      className={className}
-      style={{
-        opacity: isVisible ? 1 : 0,
-        transform: fadeOnly
-          ? undefined
-          : isVisible ? "translateY(0)" : "translateY(32px)",
-        transition: fadeOnly
-          ? "opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1)"
-          : "opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1), transform 1.1s cubic-bezier(0.22, 1, 0.36, 1)",
-      }}
+      className={`reveal ${isVisible ? "reveal-visible" : ""} ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
     </div>
